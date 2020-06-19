@@ -14,12 +14,7 @@ import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 import InstaImport from "./pages/InstaImport";
-
-const Other = () => (
-  <Jumbotron>
-    <h1>Other</h1>
-  </Jumbotron>
-);
+import Explore from "./pages/Explore";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +31,7 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/explore" component={Explore} />
         <Route path="/import" component={InstaImport} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />

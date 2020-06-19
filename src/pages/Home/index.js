@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Jumbotron } from "react-bootstrap";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -8,7 +9,14 @@ export default function Home() {
       <Jumbotron>
         <h1>Home</h1>
       </Jumbotron>
-      <p>you're on the homepage</p>
+      <div>
+        <Link to="/explore">
+          <button> explore </button>
+        </Link>
+        <Link to="/signup">
+          <button> create shop </button>
+        </Link>
+      </div>
     </div>
   );
 }
