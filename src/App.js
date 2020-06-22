@@ -14,6 +14,7 @@ import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import InstaImport from "./pages/InstaImport";
 import Explore from "./pages/Explore";
+import Gallery from "./pages/Gallery";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/explore" component={Explore} />
+        <Route path="/gallery/:name" component={Gallery} />
         <Route path="/import" component={InstaImport} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
