@@ -16,7 +16,9 @@ export default function Gallery() {
   }, [dispatch, name]);
 
   const photosToRender = () =>
-    gallery.photos.map((photo) => <PhotoCard key={photo.id} {...photo} />);
+    gallery.photos.map((photo) => (
+      <PhotoCard key={photo.id} {...photo} handle={name} />
+    ));
 
   return (
     <div>
