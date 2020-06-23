@@ -13,9 +13,9 @@ export default function Explore() {
     dispatch(getGalleries());
   }, [dispatch]);
 
-  console.log(galleries);
   const galleriesToRender = () =>
     galleries.map((gallery) => <GalleryCard key={gallery.id} {...gallery} />);
+
   return (
     <div>
       <Jumbotron>

@@ -23,7 +23,6 @@ export const getGalleries = () => async (dispatch, getState) => {
 export const getSingleGallery = (name) => async (dispatch, getState) => {
   try {
     const response = await Axios.get(`${apiUrl}/galleries/${name}`);
-    //console.log("response is:", response.data);
     dispatch(storeSingleGallery(response.data));
   } catch (e) {
     console.log(e);

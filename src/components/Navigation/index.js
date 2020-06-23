@@ -24,6 +24,7 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/explore" linkText="Explore" />
           {loginLogoutControls}
+          <NavbarItem path="/cart" linkText="Cart" />
         </Nav>
       </Navbar.Collapse>
     </Navbar>

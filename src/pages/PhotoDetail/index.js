@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSinglePhoto } from "../../store/photo/actions";
 import { selectSinglePhoto } from "../../store/photo/selectors";
+import CartButtons from "../../components/CartButtons";
 
 export default function PhotoDetail() {
-  const { name, id } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
   const photo = useSelector(selectSinglePhoto);
 
@@ -14,18 +15,17 @@ export default function PhotoDetail() {
     dispatch(getSinglePhoto(id));
   }, [dispatch, id]);
 
-  console.log("photo:", photo);
-
   return (
     <div>
       <Jumbotron>
-        <h1>Details:</h1>
+        <h1>Details</h1>
       </Jumbotron>
-      <img src={photo.src} />
+      <img src={photo.src} alt={photo.info} />
       <h3>Info</h3>
       <p>{photo.info}</p>
       <h3>Artist Description:</h3>
       <p>{photo.description}</p>
+      <CartButtons id={photo.id} src={photo.src} />
     </div>
   );
 }
