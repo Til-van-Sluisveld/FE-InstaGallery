@@ -16,6 +16,7 @@ import InstaImport from "./pages/InstaImport";
 import Explore from "./pages/Explore";
 import Gallery from "./pages/Gallery";
 import PhotoDetail from "./pages/PhotoDetail";
+import ShoppingCart from "./pages/ShoppingCart";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/explore" component={Explore} />
         <Route exact path="/gallery/:name" component={Gallery} />
         <Route path="/gallery/:name/:id" component={PhotoDetail} />
+        <Route path="/cart" component={ShoppingCart} />
         <Route path="/import" component={InstaImport} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
