@@ -36,8 +36,12 @@ export default function InstaImport() {
           continue;
         }
 
-        // Push the thumbnail src in the array
-        res.push(node.thumbnail_src);
+        // Push the photo data in the array
+        res.push({
+          description: node.edge_media_to_caption.edges[0].node.text,
+          info: node.accessibility_caption,
+          src: node.thumbnail_src,
+        });
       }
     } catch (e) {
       console.error("Unable to retrieve photos. Reason: " + e.toString());
@@ -51,29 +55,52 @@ export default function InstaImport() {
     console.log("handle looking for:", handle);
     set_feed(await instagramPhotos(handle));
   }
-  //console.log(feed);
+
+  function cancelImport() {
+    set_feed([]);
+  }
+  console.log(feed);
+
+  const inputFieldsToRender = () => {
+    return (
+      <div>
+        <form>
+          <label htmlFor="instaHandle">Instagram name:</label>
+          <br />
+          <input
+            type="text"
+            id="instaHandle"
+            name="instaHandle"
+            value={handle}
+            onChange={(e) => set_handle(e.target.value)}
+          />
+          <br />
+          <button onClick={submit}>Find</button>
+        </form>
+      </div>
+    );
+  };
+
+  const importPreview = () => {
+    return (
+      <div>
+        {feed.map((photo, index) => {
+          return <img src={photo.src} alt={photo.info} key={index} />;
+        })}
+        <div>
+          <button>Import</button>
+          <button onClick={cancelImport}>Cancel</button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div>
       <Jumbotron>
         <h1>Import pictures from Instagram</h1>
       </Jumbotron>
-      <form>
-        <label htmlFor="instaHandle">Instagram name:</label>
-        <br />
-        <input
-          type="text"
-          id="instaHandle"
-          name="instaHandle"
-          value={handle}
-          onChange={(e) => set_handle(e.target.value)}
-        />
-        <br />
-        <button onClick={submit}>submit</button>
-      </form>
-      {feed.map((photo, index) => {
-        return <img src={photo} alt={index} key={index} />;
-      })}
+      {feed.length ? importPreview() : inputFieldsToRender()}
     </div>
   );
 }
