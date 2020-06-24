@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Col } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { processOrder } from "../../store/shoppingCart/actions";
 
 export default function BuyerInfo() {
   const [name, set_name] = useState("");
@@ -9,10 +11,14 @@ export default function BuyerInfo() {
   const [address, set_address] = useState("");
   const [zip, set_zip] = useState("");
 
+  const dispatch = useDispatch();
+
   function submitForm(event) {
     event.preventDefault();
-    console.log("Buyer info:", name, email, country, city, address, zip);
+    dispatch(processOrder(name, email, country, city, address, zip));
+    //console.log("Buyer info:", name, email, country, city, address, zip);
   }
+
   return (
     <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
