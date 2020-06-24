@@ -16,7 +16,6 @@ export default function BuyerInfo() {
   function submitForm(event) {
     event.preventDefault();
     dispatch(processOrder(name, email, country, city, address, zip));
-    //console.log("Buyer info:", name, email, country, city, address, zip);
   }
 
   return (
