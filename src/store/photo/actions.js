@@ -15,3 +15,21 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
     console.log(e);
   }
 };
+
+export const importPhoto = (description, info, src, userId) => async (
+  dispatch,
+  getState
+) => {
+  //   console.log("importing", description, info, src, "from", userId);
+  try {
+    const response = await Axios.post(`${apiUrl}/photos/new`, {
+      description,
+      info,
+      src,
+      userId,
+    });
+    console.log(response);
+  } catch (e) {
+    console.log(e);
+  }
+};
