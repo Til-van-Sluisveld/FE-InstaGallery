@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Jumbotron } from "react-bootstrap";
 import Axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../store/user/selectors";
+import { importPhoto } from "../../store/photo/actions";
 
 export default function InstaImport() {
   const [handle, set_handle] = useState("");
   const [feed, set_feed] = useState([]);
+
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   async function instagramPhotos(get_handle) {
     // It will contain our photos' links
@@ -22,7 +28,7 @@ export default function InstaImport() {
         .slice(0, -1);
 
       const userInfo = JSON.parse(jsonObject);
-      // Retrieve only the first 10 results
+      // Retrieve only the first 12 results
       const mediaArray = userInfo.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges.splice(
         0,
         12
@@ -59,7 +65,12 @@ export default function InstaImport() {
   function cancelImport() {
     set_feed([]);
   }
-  console.log(feed);
+  function importPhotos() {
+    feed.map((photo) => {
+      dispatch(importPhoto(photo.description, photo.info, photo.src, user.id));
+    });
+  }
+  //   console.log(feed);
 
   const inputFieldsToRender = () => {
     return (
@@ -85,10 +96,17 @@ export default function InstaImport() {
     return (
       <div>
         {feed.map((photo, index) => {
-          return <img src={photo.src} alt={photo.info} key={index} />;
+          return (
+            <img
+              src={photo.src}
+              alt={photo.info}
+              key={index}
+              style={{ width: "32%", margin: "5px" }}
+            />
+          );
         })}
         <div>
-          <button>Import</button>
+          <button onClick={importPhotos}>Import</button>
           <button onClick={cancelImport}>Cancel</button>
         </div>
       </div>
