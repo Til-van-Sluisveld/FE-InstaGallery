@@ -9,6 +9,8 @@ export default function InstaImport() {
   const [handle, set_handle] = useState("");
   const [feed, set_feed] = useState([]);
 
+  const [photosImported, set_photosImported] = useState(false);
+
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
@@ -69,6 +71,7 @@ export default function InstaImport() {
     feed.map((photo) => {
       dispatch(importPhoto(photo.description, photo.info, photo.src, user.id));
     });
+    set_photosImported(true);
   }
   //   console.log(feed);
 
@@ -113,12 +116,25 @@ export default function InstaImport() {
     );
   };
 
+  const importSuccesMessage = () => {
+    return (
+      <div>
+        <h2>Succes</h2>
+        <p>You're photo's have been imported to your gallery</p>
+      </div>
+    );
+  };
+
   return (
     <div>
       <Jumbotron>
         <h1>Import pictures from Instagram</h1>
       </Jumbotron>
-      {feed.length ? importPreview() : inputFieldsToRender()}
+      {photosImported
+        ? importSuccesMessage()
+        : feed.length
+        ? importPreview()
+        : inputFieldsToRender()}
     </div>
   );
 }
