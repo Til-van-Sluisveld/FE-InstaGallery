@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Jumbotron } from "react-bootstrap";
+import { Jumbotron, Container, Row, Col } from "react-bootstrap";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
 import { importPhoto } from "../../store/photo/actions";
+import "./styling.css";
 
 export default function InstaImport() {
   const [handle, set_handle] = useState("");
@@ -77,7 +78,7 @@ export default function InstaImport() {
 
   const inputFieldsToRender = () => {
     return (
-      <div>
+      <div className="importPhotos">
         <form>
           <label htmlFor="instaHandle">Instagram name:</label>
           <br />
@@ -108,9 +109,15 @@ export default function InstaImport() {
             />
           );
         })}
-        <div>
-          <button onClick={importPhotos}>Import</button>
-          <button onClick={cancelImport}>Cancel</button>
+        <div className="importPhotos">
+          <Row>
+            <Col>
+              <button onClick={importPhotos}>Import</button>
+            </Col>
+            <Col>
+              <button onClick={cancelImport}>Cancel</button>
+            </Col>
+          </Row>
         </div>
       </div>
     );
@@ -130,11 +137,13 @@ export default function InstaImport() {
       <Jumbotron>
         <h1>Import pictures from Instagram</h1>
       </Jumbotron>
-      {photosImported
-        ? importSuccesMessage()
-        : feed.length
-        ? importPreview()
-        : inputFieldsToRender()}
+      <Container>
+        {photosImported
+          ? importSuccesMessage()
+          : feed.length
+          ? importPreview()
+          : inputFieldsToRender()}
+      </Container>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
-import { Jumbotron } from "react-bootstrap";
+import { Jumbotron, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "./styling.css";
 
 export default function Home() {
   return (
@@ -8,14 +9,24 @@ export default function Home() {
       <Jumbotron>
         <h1>Home</h1>
       </Jumbotron>
-      <div>
-        <Link to="/explore">
-          <button> explore </button>
-        </Link>
-        <Link to="/signup">
-          <button> create shop </button>
-        </Link>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <div className="buttonColumn">
+              <Link to="/explore">
+                <button> explore </button>
+              </Link>
+            </div>
+          </Col>
+          <Col>
+            <div className="buttonColumn">
+              <Link to="/signup">
+                <button> create shop </button>
+              </Link>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

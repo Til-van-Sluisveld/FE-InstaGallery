@@ -1,20 +1,26 @@
 import React from "react";
-import { Jumbotron } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Jumbotron, Container } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
 import { selectShoppingCart } from "../../store/shoppingCart/selectors";
 import CartButtons from "../../components/CartButtons";
 import { Link } from "react-router-dom";
+import { emptyShoppingCart } from "../../store/shoppingCart/actions";
 
 export default function ShoppingCart() {
   const cart = useSelector(selectShoppingCart);
+  const dispatch = useDispatch();
   const totalPhotos = cart.map((photo) => {
     return photo.quantity;
   });
 
+  function emptyCart() {
+    dispatch(emptyShoppingCart());
+  }
+
   const cartToRender = () => {
     return (
       <div>
-        <table>
+        <table style={{ width: "100%" }}>
           <thead>
             <tr>
               <th>Photo</th>
@@ -45,7 +51,9 @@ export default function ShoppingCart() {
             <tr>
               <td></td>
               <td></td>
-              <td></td>
+              <td>
+                <b>Total Price:</b>
+              </td>
               <td>
                 €{totalPhotos.reduce((acc, current) => acc + current) * 25}
               </td>
@@ -55,17 +63,19 @@ export default function ShoppingCart() {
         <Link to="/delivery-info">
           <button>checkout</button>
         </Link>
-        <button>empty cart</button>
+        <button onClick={emptyCart}>empty cart</button>
       </div>
     );
   };
 
   return (
-    <div>
+    <div style={{ paddingBottom: "20px" }}>
       <Jumbotron>
         <h1>Shopping cart</h1>
       </Jumbotron>
-      {cart.length ? cartToRender() : <p>cart is empty</p>}
+      <Container>
+        {cart.length ? cartToRender() : <p>cart is empty</p>}
+      </Container>
     </div>
   );
 }
