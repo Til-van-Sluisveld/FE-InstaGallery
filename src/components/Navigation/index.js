@@ -7,9 +7,11 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import { selectShoppingCart } from "../../store/shoppingCart/selectors";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
+  const cart = useSelector(selectShoppingCart);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
@@ -24,7 +26,7 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/explore" linkText="Explore" />
           {loginLogoutControls}
-          <NavbarItem path="/cart" linkText="Cart" />
+          <NavbarItem path="/cart" linkText={`Cart(${cart.length})`} />
         </Nav>
       </Navbar.Collapse>
     </Navbar>
