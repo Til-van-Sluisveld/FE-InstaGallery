@@ -1,10 +1,11 @@
 import React from "react";
-import { Jumbotron, Container } from "react-bootstrap";
+import { Jumbotron, Container, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { selectShoppingCart } from "../../store/shoppingCart/selectors";
 import CartButtons from "../../components/CartButtons";
 import { Link } from "react-router-dom";
 import { emptyShoppingCart } from "../../store/shoppingCart/actions";
+import "./styling.css";
 
 export default function ShoppingCart() {
   const cart = useSelector(selectShoppingCart);
@@ -20,7 +21,7 @@ export default function ShoppingCart() {
   const cartToRender = () => {
     return (
       <div>
-        <table style={{ width: "100%" }}>
+        <table>
           <thead>
             <tr>
               <th>Photo</th>
@@ -34,11 +35,7 @@ export default function ShoppingCart() {
               return (
                 <tr key={index}>
                   <td>
-                    <img
-                      style={{ height: "200px" }}
-                      src={cartItem.src}
-                      alt={cartItem.photoId}
-                    />
+                    <img src={cartItem.src} alt={cartItem.photoId} />
                   </td>
                   <td>
                     <CartButtons id={cartItem.photoId} />
@@ -60,10 +57,26 @@ export default function ShoppingCart() {
             </tr>
           </tbody>
         </table>
-        <Link to="/delivery-info">
-          <button>checkout</button>
+        <div className="cartControls">
+          <Link to="/delivery-info">
+            <Button variant="dark">Place Order</Button>
+          </Link>
+          <Button variant="dark" onClick={emptyCart}>
+            Empty Cart
+          </Button>
+        </div>
+      </div>
+    );
+  };
+
+  const cartWithNoContents = () => {
+    return (
+      <div>
+        <h2>Your Cart seems to be empty</h2>
+        <p>Go on and browse some galleries for beautiful photo's to print!</p>
+        <Link to="/explore">
+          <Button variant="dark">Explore Galleries</Button>
         </Link>
-        <button onClick={emptyCart}>empty cart</button>
       </div>
     );
   };
@@ -74,7 +87,7 @@ export default function ShoppingCart() {
         <h1>Shopping cart</h1>
       </Jumbotron>
       <Container>
-        {cart.length ? cartToRender() : <p>cart is empty</p>}
+        {cart.length ? cartToRender() : cartWithNoContents()}
       </Container>
     </div>
   );
