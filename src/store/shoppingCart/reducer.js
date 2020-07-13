@@ -2,6 +2,9 @@ const initialState = [];
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case "EMPTY_CART": {
+      return [];
+    }
     case "ADD": {
       if (state.find((item) => item.photoId === payload.id)) {
         return state.map((item) =>

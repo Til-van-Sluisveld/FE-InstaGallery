@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleGallery } from "../../store/galleries/actions";
 import { selectSingleGallery } from "../../store/galleries/selectors";
 import PhotoCard from "../../components/PhotoCard";
+import "./styling.css";
 
 export default function Gallery() {
   const { name } = useParams();
@@ -25,7 +26,9 @@ export default function Gallery() {
       <Jumbotron>
         <h1>Gallery of {name} </h1>
       </Jumbotron>
-      {Object.keys(gallery).length === 0 ? <p>loading</p> : photosToRender()}
+      <div className="gallery-container">
+        {Object.keys(gallery).length === 0 ? <p>loading</p> : photosToRender()}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,8 @@
+.importPhotos {
+  display: inline;
+  float: none;
+  text-align: center;
+}
+.importPhotos button {
+  margin: 10px;
+}
