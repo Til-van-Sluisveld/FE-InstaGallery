@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Jumbotron, Container, Row, Col } from "react-bootstrap";
+import { Jumbotron, Container, Row, Col, Button } from "react-bootstrap";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
@@ -90,7 +90,9 @@ export default function InstaImport() {
             onChange={(e) => set_handle(e.target.value)}
           />
           <br />
-          <button onClick={submit}>Find</button>
+          <Button variant="dark" onClick={submit}>
+            Find
+          </Button>
         </form>
       </div>
     );
@@ -98,7 +100,7 @@ export default function InstaImport() {
 
   const importPreview = () => {
     return (
-      <div>
+      <div className="import-preview">
         {feed.map((photo, index) => {
           return (
             <img
@@ -112,10 +114,14 @@ export default function InstaImport() {
         <div className="importPhotos">
           <Row>
             <Col>
-              <button onClick={importPhotos}>Import</button>
+              <Button variant="dark" onClick={importPhotos}>
+                Import
+              </Button>
             </Col>
             <Col>
-              <button onClick={cancelImport}>Cancel</button>
+              <Button variant="dark" onClick={cancelImport}>
+                Cancel
+              </Button>
             </Col>
           </Row>
         </div>
