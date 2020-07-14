@@ -12,8 +12,10 @@ export default function LoggedIn() {
   return (
     <>
       <NavbarItem path="/import" linkText="Import Photos" />
-      <Nav.Item style={{ padding: ".5rem 1rem" }}>{user.name}</Nav.Item>
-      <Button onClick={() => dispatch(logOut())}>Logout</Button>
+      <NavbarItem path={`/gallery/${user.name}`} linkText={user.name} />
+      <Button variant="dark" onClick={() => dispatch(logOut())}>
+        Logout
+      </Button>
     </>
   );
 }
