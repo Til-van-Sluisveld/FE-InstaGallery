@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
 import { importPhoto } from "../../store/photo/actions";
 import "./styling.css";
+import { Link } from "react-router-dom";
 
 export default function InstaImport() {
   const [handle, set_handle] = useState("");
@@ -134,6 +135,9 @@ export default function InstaImport() {
       <div>
         <h2>Succes</h2>
         <p>You're photo's have been imported to your gallery</p>
+        <Link to={`/gallery/${user.name}`}>
+          <Button variant="dark">See Gallery</Button>
+        </Link>
       </div>
     );
   };
