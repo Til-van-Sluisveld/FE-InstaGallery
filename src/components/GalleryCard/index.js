@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 
 export default function GalleryCard(props) {
   return (
-    <div className="galleryCard">
+    <div className="gallery-card">
       <h3>{props.name}</h3>
       <p>Photos: {props.photos.length}</p>
       {props.photos.slice(0, 3).map((photo) => {
