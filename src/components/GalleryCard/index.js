@@ -8,13 +8,12 @@ export default function GalleryCard(props) {
     <div className="gallery-card">
       <h3>{props.name}</h3>
       <p>Photos: {props.photos.length}</p>
-      {props.photos.slice(0, 3).map((photo) => {
-        return <img key={photo.id} src={photo.src} alt={photo.info} />;
-      })}
-
       <Link to={`/gallery/${props.name}`}>
-        {/* <button>Visit Gallery</button> */}
-        <Button variant="dark">Visit Gallery</Button>
+        <div>
+          {props.photos.slice(0, 3).map((photo) => {
+            return <img key={photo.id} src={photo.src} alt={photo.info} />;
+          })}
+        </div>
       </Link>
     </div>
   );
