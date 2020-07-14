@@ -16,3 +16,7 @@
 .import-preview:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+.import-preview img {
+  width: 32%;
+  margin: 5px;
+}

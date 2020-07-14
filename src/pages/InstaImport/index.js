@@ -103,14 +103,7 @@ export default function InstaImport() {
     return (
       <div className="import-preview">
         {feed.map((photo, index) => {
-          return (
-            <img
-              src={photo.src}
-              alt={photo.info}
-              key={index}
-              style={{ width: "32%", margin: "5px" }}
-            />
-          );
+          return <img src={photo.src} alt={photo.info} key={index} />;
         })}
         <div className="importPhotos">
           <Row>
