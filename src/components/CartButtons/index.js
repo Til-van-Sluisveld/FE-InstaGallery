@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../store/shoppingCart/actions";
 import { selectQuantityOfProductInCart } from "../../store/shoppingCart/selectors";
+import { Button } from "react-bootstrap";
 
 export default function CartButtons(props) {
   const dispatch = useDispatch();
@@ -18,14 +19,21 @@ export default function CartButtons(props) {
     <div>
       {quantity ? (
         <div>
-          <button onClick={subtractHandler}>-</button>
+          <Button variant="dark" onClick={subtractHandler}>
+            -
+          </Button>
           <span> {quantity} in cart </span>
-          <button onClick={addingHandler}>+</button>
+
+          <Button variant="dark" onClick={addingHandler}>
+            +
+          </Button>
         </div>
       ) : (
         <div>
-          <span> put in cart </span>
-          <button onClick={addingHandler}>+</button>
+          <span> Put in cart </span>
+          <Button variant="dark" onClick={addingHandler}>
+            +
+          </Button>
         </div>
       )}
     </div>
