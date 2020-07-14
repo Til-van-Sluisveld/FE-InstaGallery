@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styling.css";
+import { Button } from "react-bootstrap";
 
 export default function GalleryCard(props) {
   return (
@@ -12,7 +13,8 @@ export default function GalleryCard(props) {
       })}
 
       <Link to={`/gallery/${props.name}`}>
-        <button>Visit Gallery</button>
+        {/* <button>Visit Gallery</button> */}
+        <Button variant="dark">Visit Gallery</Button>
       </Link>
     </div>
   );
