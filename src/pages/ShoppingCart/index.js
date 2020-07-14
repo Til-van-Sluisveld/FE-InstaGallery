@@ -72,7 +72,7 @@ export default function ShoppingCart() {
   const cartWithNoContents = () => {
     return (
       <div>
-        <h2>Your Cart seems to be empty</h2>
+        <h2>Your cart seems to be empty</h2>
         <p>Go on and browse some galleries for beautiful photo's to print!</p>
         <Link to="/explore">
           <Button variant="dark">Explore Galleries</Button>

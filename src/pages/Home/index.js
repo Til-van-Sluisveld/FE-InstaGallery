@@ -1,9 +1,13 @@
 import React from "react";
-import { Jumbotron, Container, Row, Col } from "react-bootstrap";
+import { Jumbotron, Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./styling.css";
+import { useSelector } from "react-redux";
+import { selectToken } from "../../store/user/selectors";
 
 export default function Home() {
+  const token = useSelector(selectToken);
+
   return (
     <div>
       <Jumbotron>
@@ -14,15 +18,21 @@ export default function Home() {
           <Col>
             <div className="buttonColumn">
               <Link to="/explore">
-                <button> explore </button>
+                <Button variant="dark">Explore</Button>
               </Link>
             </div>
           </Col>
           <Col>
             <div className="buttonColumn">
-              <Link to="/signup">
-                <button> create shop </button>
-              </Link>
+              {token ? (
+                <Link to="/import">
+                  <Button variant="dark">Import photos</Button>
+                </Link>
+              ) : (
+                <Link to="/signup">
+                  <Button variant="dark">Create shop</Button>
+                </Link>
+              )}
             </div>
           </Col>
         </Row>

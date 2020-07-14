@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Jumbotron, Container, Row, Col } from "react-bootstrap";
+import { Jumbotron, Container, Row, Col, Button } from "react-bootstrap";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
 import { importPhoto } from "../../store/photo/actions";
 import "./styling.css";
+import { Link } from "react-router-dom";
 
 export default function InstaImport() {
   const [handle, set_handle] = useState("");
@@ -90,7 +91,9 @@ export default function InstaImport() {
             onChange={(e) => set_handle(e.target.value)}
           />
           <br />
-          <button onClick={submit}>Find</button>
+          <Button variant="dark" onClick={submit}>
+            Find
+          </Button>
         </form>
       </div>
     );
@@ -98,24 +101,21 @@ export default function InstaImport() {
 
   const importPreview = () => {
     return (
-      <div>
+      <div className="import-preview">
         {feed.map((photo, index) => {
-          return (
-            <img
-              src={photo.src}
-              alt={photo.info}
-              key={index}
-              style={{ width: "32%", margin: "5px" }}
-            />
-          );
+          return <img src={photo.src} alt={photo.info} key={index} />;
         })}
         <div className="importPhotos">
           <Row>
             <Col>
-              <button onClick={importPhotos}>Import</button>
+              <Button variant="dark" onClick={importPhotos}>
+                Import
+              </Button>
             </Col>
             <Col>
-              <button onClick={cancelImport}>Cancel</button>
+              <Button variant="dark" onClick={cancelImport}>
+                Cancel
+              </Button>
             </Col>
           </Row>
         </div>
@@ -128,6 +128,9 @@ export default function InstaImport() {
       <div>
         <h2>Succes</h2>
         <p>You're photo's have been imported to your gallery</p>
+        <Link to={`/gallery/${user.name}`}>
+          <Button variant="dark">See Gallery</Button>
+        </Link>
       </div>
     );
   };
