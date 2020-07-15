@@ -3,13 +3,14 @@ import { Jumbotron, Container, Row, Col, Button } from "react-bootstrap";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
-import { importPhoto } from "../../store/photo/actions";
+import { importPhoto, importPhotos } from "../../store/photo/actions";
 import "./styling.css";
 import { Link } from "react-router-dom";
 
 export default function InstaImport() {
   const [handle, set_handle] = useState("");
   const [feed, set_feed] = useState([]);
+  console.log("feed:", feed);
 
   const [photosImported, set_photosImported] = useState(false);
 
@@ -69,13 +70,11 @@ export default function InstaImport() {
   function cancelImport() {
     set_feed([]);
   }
-  function importPhotos() {
-    feed.map((photo) => {
-      dispatch(importPhoto(photo.description, photo.info, photo.src, user.id));
-    });
+  function submitImport() {
+    const toImport = feed.map((photo) => ({ ...photo, userId: user.id }));
+    dispatch(importPhotos(toImport));
     set_photosImported(true);
   }
-  //   console.log(feed);
 
   const inputFieldsToRender = () => {
     return (
@@ -108,7 +107,7 @@ export default function InstaImport() {
         <div className="importPhotos">
           <Row>
             <Col>
-              <Button variant="dark" onClick={importPhotos}>
+              <Button variant="dark" onClick={submitImport}>
                 Import
               </Button>
             </Col>

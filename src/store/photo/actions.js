@@ -1,5 +1,6 @@
 import Axios from "axios";
 import { apiUrl } from "../../config/constants";
+import { selectToken } from "../user/selectors";
 
 export const storeSinglePhoto = (photo) => ({
   type: "STORE_PHOTO",
@@ -16,18 +17,20 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
   }
 };
 
-export const importPhoto = (description, info, src, userId) => async (
-  dispatch,
-  getState
-) => {
-  //   console.log("importing", description, info, src, "from", userId);
+export const importPhotos = (toImport) => async (dispatch, getState) => {
+  const token = selectToken(getState());
+  if (token === null) return;
+
   try {
-    const response = await Axios.post(`${apiUrl}/photos/new`, {
-      description,
-      info,
-      src,
-      userId,
-    });
+    const response = await Axios.post(
+      `${apiUrl}/photos/new`,
+      {
+        toImport,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     console.log(response);
   } catch (e) {
     console.log(e);
