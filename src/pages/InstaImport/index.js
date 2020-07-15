@@ -3,7 +3,7 @@ import { Jumbotron, Container, Row, Col, Button } from "react-bootstrap";
 import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/user/selectors";
-import { importPhoto, importPhotos } from "../../store/photo/actions";
+import { importPhotos } from "../../store/photo/actions";
 import "./styling.css";
 import { Link } from "react-router-dom";
 
