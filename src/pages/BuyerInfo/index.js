@@ -103,7 +103,7 @@ export default function BuyerInfo() {
           </Form.Group>
 
           <Form.Group className="mt-5">
-            <Button variant="primary" type="submit" onClick={submitForm}>
+            <Button variant="dark" type="submit" onClick={submitForm}>
               Place order
             </Button>
           </Form.Group>
