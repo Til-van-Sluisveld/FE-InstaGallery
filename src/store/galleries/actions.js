@@ -1,5 +1,6 @@
 import Axios from "axios";
 import { apiUrl } from "../../config/constants";
+import { selectGalleries } from "./selectors";
 
 export const storeGalleries = (galleries) => ({
   type: "STORE_GALLERIES",
@@ -21,10 +22,16 @@ export const getGalleries = () => async (dispatch, getState) => {
 };
 
 export const getSingleGallery = (name) => async (dispatch, getState) => {
-  try {
-    const response = await Axios.get(`${apiUrl}/galleries/${name}`);
-    dispatch(storeSingleGallery(response.data));
-  } catch (e) {
-    console.log(e);
+  const state = selectGalleries(getState());
+  if (state.length) {
+    const galleryFound = state.find((gallery) => gallery.name === name);
+    dispatch(storeSingleGallery(galleryFound));
+  } else {
+    try {
+      const response = await Axios.get(`${apiUrl}/galleries/${name}`);
+      dispatch(storeSingleGallery(response.data));
+    } catch (e) {
+      console.log(e);
+    }
   }
 };
