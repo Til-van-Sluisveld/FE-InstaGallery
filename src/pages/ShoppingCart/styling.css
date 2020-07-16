@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+
+td img {
+  height: 200px;
+}
+
+.cartControls {
+  /* float: right; */
+  padding-right: 20px;
+}
+
+.cartControls button {
+  margin-right: 20px;
+}
