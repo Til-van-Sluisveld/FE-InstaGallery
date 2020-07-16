@@ -23,14 +23,17 @@ export const processOrder = (
   buyer_zipcode
 ) => async (dispatch, getState) => {
   const cart = selectShoppingCart(getState());
+  const buyerInfo = {
+    buyer_name,
+    buyer_email,
+    buyer_country,
+    buyer_city,
+    buyer_address,
+    buyer_zipcode,
+  };
   try {
     const response = await Axios.post(`${apiUrl}/invoices`, {
-      buyer_name,
-      buyer_email,
-      buyer_country,
-      buyer_city,
-      buyer_address,
-      buyer_zipcode,
+      buyerInfo,
       cart,
     });
     console.log("succes?", response.data);
