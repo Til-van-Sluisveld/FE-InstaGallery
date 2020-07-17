@@ -1,42 +1,97 @@
-# Frontend template
+## ⭐ InstaGallery ⭐
 
-This is a simple react/redux/jwt template to start a project quickly
+### Sell your instagram photo's Online!
 
-## Table of contents:
+### What this app is about
 
-- **[Setup](#setup-how-to-use-this-template)**
-- **[Create React App docs](#cra-docs)**
+[Find out here for a working version](https://instagallery.netlify.app/)
 
-## SETUP How to use this template
+<!-- Savoristas charts the exciting universe of ingredients combinations. This web app allows visitors to create and share 'food palettes' - being color palettes, but than palettes of colorful ingredients (you need to see it, really). Visitor can share recipes too, and palettes work as filters for the recipes. So if you like the apple & cinnamon palette, your favorite apple pie recipe is one click away. -->
 
-1. Create a new project based on this template using the `Use this template` button
+## Table of contents
 
-![HOW_TO_USE](https://user-images.githubusercontent.com/20372832/77003323-70966180-695d-11ea-8abe-b362d57135f3.gif)
+- [App demo](#App-demo)
+- [Used technologies and concepts](#used-technologies-and-concepts)
+- [Goals for this project](#goals-for-this-project)
+- [User stories](#user-stories)
+- [Project board](#project-board)
+- [Wireframe](#wireframe)
+- [Datamodel](#datamodel)
+- [Git version control](#git-version-control)
+- [Backend server repo](#backend-server-repo)
 
-2. Clone the app
+## App demo
 
-```
-git clone git@github.com:YOUR_GITHUB_NAME/YOUR_PROJECT_NAME.git
-```
+![App demo]()
 
-3. cd into your project
+## Used technologies and concepts
 
-```
-cd YOUR_PROJECT_NAME
-```
+👀👇 **Click links to see code samples in this project** 👇👀
 
-4. install dependencies
+<!-- - [React for UI building](https://github.com/tdijkmans/savoristas-front/blob/master/src/App.js)
+- [Redux for state management](https://github.com/tdijkmans/savoristas-front/tree/master/src/store)
+- [Authentication](https://github.com/tdijkmans/savoristas-front/tree/master/src/store)
+- [Express as web app framework](https://github.com/tdijkmans/savoristas-back/blob/master/index.js)
+  - [REST API](https://github.com/tdijkmans/savoristas-back/blob/master/routers/recipes.js)
+- [Sequelize as ORM](https://github.com/tdijkmans/savoristas-back/blob/master/index.js)
+- [Many-to-many models](https://github.com/tdijkmans/savoristas-back/tree/master/models) ⭐
+- [Chakra UI as component library](https://github.com/tdijkmans/savoristas-front/blob/master/src/components/Navigation/Drawermenu.js) ⭐
+- [React-Input-Color as input](https://github.com/tdijkmans/savoristas-front/blob/master/src/components/CreatePaletteForm/index.js) ⭐ -->
 
-```
-npm install
-```
+⭐ _New technology learned during this project_
 
-5. Start development server with npm start
+## Goals for this project
 
-```
-npm start
-```
+The goal of this project is to build a full-stack app, practicing known and exploring _new_ technologies (see above). I learned these new tools independently by reading its documentation, consulting forums like StackOverlfow and watching online videos.
 
-## CRA docs
+- practice full-stack app development
+- build a working prototype in 2 weeks
+- apply what we learned in Codaisseur's bootcamp
+- extend with new technology independently
+- showcase and document development skills using:
+  - [wireframes]() as Minimum Viable Product
+  - conscious [data model]() design
+  - user stories perspective
+  - agile/[kanban project](https://github.com/Til-van-Sluisveld/FE-InstaGallery/projects/1) approach
+  - transparant and structured [git version control](#git-version-control)
 
-The normal Create React App docs can be found in [CRA_DOCS.md](./CRA_DOCS.md)
+## User stories
+
+<!-- - As a page visitor, I can sign up and log in as a user. I must register before I can post food palettes and recipes
+- As a visitor, I am able see existing food palettes and recipes as a gallery
+- As a user, I am able to post new food palettes
+- As a user, I am able to post new recipes
+- As a visitor, I can see recipes of interest and get their details for cooking.
+- As a visitor, I can select food palettes and filter for corresponding recipes
+- _planned:_ As a user, I can like recipes and foodpaletes
+- _planned:_ As a user, I can bookmark recipes and foodpaletes -->
+
+_This project is work in progress. Some features still need to be implemented and revised. Any suggestions or feedback is welcome, please let me know [here](https://www.linkedin.com/in/tilvansluisveld/)_.
+
+## Project Board
+
+Go to [project board](https://github.com/Til-van-Sluisveld/FE-InstaGallery/projects/1)
+
+## Wireframe
+
+Go to [wireframes](https://github.com/Til-van-Sluisveld/FE-InstaGallery/tree/development/project/Wireframes)
+
+## Datamodel
+
+Go to [datamodel](https://github.com/Til-van-Sluisveld/FE-InstaGallery/blob/development/project/DataModel.png)
+
+## Git version control
+
+I recognize the need for solid version control and try to:
+
+- write clear commit messages
+- name branches by feature
+- do pull requests with concise summaries
+
+#### 👀👇 Click links to view samples of pull requests 👇👀
+
+- [Homepage]() pull request
+
+## Backend server repo
+
+The backend side of this project is an Express server using Sequelize to manage the underlying Postgres database. [Click here for more details](https://github.com/Til-van-Sluisveld/BE-InstaGallery)
