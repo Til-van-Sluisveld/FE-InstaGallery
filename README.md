@@ -1,3 +1,4 @@
+
 # ⭐ InstaGallery ⭐
 
 ### Sell your instagram photo's Online!
@@ -67,6 +68,7 @@ The goal of this project is to build a full-stack app, practicing known and expl
 - As a person who loves photography I want to select a photo and view its details
 - As a person who loves photography I want to order a photo, so I can support my favorite photographers
 
+
 _This project is work in progress. Some features still need to be implemented and revised. Any suggestions or feedback is welcome, please let me know [here](https://www.linkedin.com/in/tilvansluisveld/)_.
 
 ## Project Board
@@ -89,10 +91,12 @@ I recognize the need for solid version control and try to:
 - name branches by feature
 - do pull requests with concise summaries
 
+
 #### 👀 Click links to view samples of pull requests 👀
 
 - [Import photos feature](https://github.com/Til-van-Sluisveld/FE-InstaGallery/pull/6) pull request
 - [Checkout feature](https://github.com/Til-van-Sluisveld/BE-InstaGallery/pull/5) pull request
+
 
 ## Backend server repo
 
