@@ -1,12 +1,17 @@
-## ⭐ InstaGallery ⭐
+
+# ⭐ InstaGallery ⭐
 
 ### Sell your instagram photo's Online!
 
-### What this app is about
+## What this app is about
 
 [Find out here for a working version](https://instagallery.netlify.app/)
 
-<!-- Savoristas charts the exciting universe of ingredients combinations. This web app allows visitors to create and share 'food palettes' - being color palettes, but than palettes of colorful ingredients (you need to see it, really). Visitor can share recipes too, and palettes work as filters for the recipes. So if you like the apple & cinnamon palette, your favorite apple pie recipe is one click away. -->
+Two of my major hobbies are Travel and Photography. I like to combine thes hobbies and upload photo's of my travels on instagram. Someone commented on one of my pictures asking me if he could have the photo so he could print it out and hang it on his wall. So I wanted to create a webshop using the photographs i had already uploaded to instagram.
+
+I have friends that share my hobby. I figured they would be interested in also start selling their photographs. So instead of creating a single webshop I wanted to create a webshop creator.
+
+Enter InstaGallery.
 
 ## Table of contents
 
@@ -49,22 +54,20 @@ The goal of this project is to build a full-stack app, practicing known and expl
 - apply what we learned in Codaisseur's bootcamp
 - extend with new technology independently
 - showcase and document development skills using:
-  - [wireframes]() as Minimum Viable Product
-  - conscious [data model]() design
+  - [wireframes](https://github.com/Til-van-Sluisveld/FE-InstaGallery/tree/development/project/Wireframes) as Minimum Viable Product
+  - conscious [data model](https://github.com/Til-van-Sluisveld/FE-InstaGallery/blob/development/project/DataModel.png) design
   - user stories perspective
   - agile/[kanban project](https://github.com/Til-van-Sluisveld/FE-InstaGallery/projects/1) approach
   - transparant and structured [git version control](#git-version-control)
 
 ## User stories
 
-<!-- - As a page visitor, I can sign up and log in as a user. I must register before I can post food palettes and recipes
-- As a visitor, I am able see existing food palettes and recipes as a gallery
-- As a user, I am able to post new food palettes
-- As a user, I am able to post new recipes
-- As a visitor, I can see recipes of interest and get their details for cooking.
-- As a visitor, I can select food palettes and filter for corresponding recipes
-- _planned:_ As a user, I can like recipes and foodpaletes
-- _planned:_ As a user, I can bookmark recipes and foodpaletes -->
+- As a photograper I want to sell photos I have already uploaded to instagram
+- As a photographer i want to be notified once someone bought one of my photographs
+- As a person who love photography I can find instagram users photo pages, so I can admire their work.
+- As a person who loves photography I want to select a photo and view its details
+- As a person who loves photography I want to order a photo, so I can support my favorite photographers
+
 
 _This project is work in progress. Some features still need to be implemented and revised. Any suggestions or feedback is welcome, please let me know [here](https://www.linkedin.com/in/tilvansluisveld/)_.
 
@@ -88,9 +91,12 @@ I recognize the need for solid version control and try to:
 - name branches by feature
 - do pull requests with concise summaries
 
-#### 👀👇 Click links to view samples of pull requests 👇👀
 
-- [Homepage]() pull request
+#### 👀 Click links to view samples of pull requests 👀
+
+- [Import photos feature](https://github.com/Til-van-Sluisveld/FE-InstaGallery/pull/6) pull request
+- [Checkout feature](https://github.com/Til-van-Sluisveld/BE-InstaGallery/pull/5) pull request
+
 
 ## Backend server repo
 
