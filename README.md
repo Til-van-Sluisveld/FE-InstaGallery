@@ -26,7 +26,7 @@
 
 ## Used technologies and concepts
 
-👀👇 **Click links to see code samples in this project** 👇👀
+👇 **Click links to see code samples in this project** 👇
 
 - [React for UI building](https://github.com/Til-van-Sluisveld/FE-InstaGallery/blob/master/src/App.js)
 - [Redux for state management](https://github.com/Til-van-Sluisveld/FE-InstaGallery/tree/master/src/store)
