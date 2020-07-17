@@ -28,15 +28,15 @@
 
 👀👇 **Click links to see code samples in this project** 👇👀
 
-<!-- - [React for UI building](https://github.com/tdijkmans/savoristas-front/blob/master/src/App.js)
-- [Redux for state management](https://github.com/tdijkmans/savoristas-front/tree/master/src/store)
-- [Authentication](https://github.com/tdijkmans/savoristas-front/tree/master/src/store)
-- [Express as web app framework](https://github.com/tdijkmans/savoristas-back/blob/master/index.js)
-  - [REST API](https://github.com/tdijkmans/savoristas-back/blob/master/routers/recipes.js)
-- [Sequelize as ORM](https://github.com/tdijkmans/savoristas-back/blob/master/index.js)
-- [Many-to-many models](https://github.com/tdijkmans/savoristas-back/tree/master/models) ⭐
-- [Chakra UI as component library](https://github.com/tdijkmans/savoristas-front/blob/master/src/components/Navigation/Drawermenu.js) ⭐
-- [React-Input-Color as input](https://github.com/tdijkmans/savoristas-front/blob/master/src/components/CreatePaletteForm/index.js) ⭐ -->
+- [React for UI building](https://github.com/Til-van-Sluisveld/FE-InstaGallery/blob/master/src/App.js)
+- [Redux for state management](https://github.com/Til-van-Sluisveld/FE-InstaGallery/tree/master/src/store)
+- [Authentication](https://github.com/Til-van-Sluisveld/FE-InstaGallery/tree/master/src/store)
+- [Express as web app framework](https://github.com/Til-van-Sluisveld/BE-InstaGallery/blob/master/index.js)
+  - [REST API](https://github.com/Til-van-Sluisveld/BE-InstaGallery/blob/master/routers/galleries.js)
+- [Sequelize as ORM](https://github.com/Til-van-Sluisveld/BE-InstaGallery/blob/master/models/photo.js)
+- [Environment variables](https://github.com/Til-van-Sluisveld/FE-InstaGallery/blob/master/src/config/constants.js) ⭐
+- [Nodemailer & Mailtrap.io](https://github.com/Til-van-Sluisveld/BE-InstaGallery/blob/master/routers/invoices.js) ⭐
+- [Web Scraping](https://github.com/Til-van-Sluisveld/FE-InstaGallery/blob/master/src/pages/InstaImport/index.js) ⭐
 
 ⭐ _New technology learned during this project_
 
