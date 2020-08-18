@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { apiUrl } from "../../config/constants";
 import { selectGalleries } from "./selectors";
+import { selectToken, selectUser } from "../user/selectors";
 
 export const storeGalleries = (galleries) => ({
   type: "STORE_GALLERIES",
@@ -10,6 +11,11 @@ export const storeGalleries = (galleries) => ({
 export const storeSingleGallery = (gallery) => ({
   type: "STORE_SINGLE_GALLERY",
   payload: gallery,
+});
+
+export const importPhotosToGallery = (photos, name) => ({
+  type: "IMPORT_TO_GALLERY",
+  payload: { photos, name },
 });
 
 export const getGalleries = () => async (dispatch, getState) => {
@@ -43,5 +49,29 @@ export const getSingleGallery = (name) => async (dispatch, getState) => {
     } catch (e) {
       console.log(e);
     }
+  }
+};
+
+export const importPhotos = (toImport) => async (dispatch, getState) => {
+  const token = selectToken(getState());
+  if (token === null) return;
+
+  try {
+    const response = await Axios.post(
+      `${apiUrl}/photos/new`,
+      {
+        toImport,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    const state = selectGalleries(getState());
+    if (state.length) {
+      const name = selectUser(getState()).name;
+      dispatch(importPhotosToGallery(response.data, name));
+    }
+  } catch (e) {
+    console.log(e);
   }
 };
