@@ -24,23 +24,3 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
     }
   }
 };
-
-export const importPhotos = (toImport) => async (dispatch, getState) => {
-  const token = selectToken(getState());
-  if (token === null) return;
-
-  try {
-    const response = await Axios.post(
-      `${apiUrl}/photos/new`,
-      {
-        toImport,
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-    console.log(response);
-  } catch (e) {
-    console.log(e);
-  }
-};
