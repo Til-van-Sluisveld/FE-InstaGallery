@@ -15,6 +15,12 @@ export const storeSingleGallery = (gallery) => ({
 export const getGalleries = () => async (dispatch, getState) => {
   try {
     const response = await Axios.get(`${apiUrl}/galleries`);
+    //sort by date so newest pictures appear first in gallery
+    response.data.forEach((gallery) => {
+      gallery.photos.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+    });
     dispatch(storeGalleries(response.data));
   } catch (e) {
     console.log(e);
@@ -29,6 +35,10 @@ export const getSingleGallery = (name) => async (dispatch, getState) => {
   } else {
     try {
       const response = await Axios.get(`${apiUrl}/galleries/${name}`);
+      console.log("data", response.data);
+      response.data.photos.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
       dispatch(storeSingleGallery(response.data));
     } catch (e) {
       console.log(e);
