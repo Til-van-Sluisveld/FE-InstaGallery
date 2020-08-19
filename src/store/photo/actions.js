@@ -1,6 +1,5 @@
 import Axios from "axios";
 import { apiUrl } from "../../config/constants";
-import { selectToken } from "../user/selectors";
 import { selectSingleGallery } from "../galleries/selectors";
 
 export const storeSinglePhoto = (photo) => ({
