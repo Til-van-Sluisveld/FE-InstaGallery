@@ -25,5 +25,11 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
 };
 
 export const deletePhoto = (id) => async (dispatch, getState) => {
-  console.log("Deleting photo with id:", id);
+  //console.log("Deleting photo with id:", id);
+  try {
+    const response = await Axios.delete(`${apiUrl}/photos/delete/${id}`);
+    console.log("response:", response);
+  } catch (e) {
+    console.log(e);
+  }
 };
