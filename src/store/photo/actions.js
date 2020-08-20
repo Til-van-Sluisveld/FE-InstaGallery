@@ -2,7 +2,7 @@ import Axios from "axios";
 import { apiUrl } from "../../config/constants";
 import { selectSingleGallery, selectGalleries } from "../galleries/selectors";
 import { selectToken } from "../user/selectors";
-import { storeSingleGallery } from "../galleries/actions";
+import { storeSingleGallery, storeGalleries } from "../galleries/actions";
 
 export const storeSinglePhoto = (photo) => ({
   type: "STORE_PHOTO",
@@ -28,6 +28,7 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
 
 export const deletePhoto = (id) => async (dispatch, getState) => {
   const token = selectToken(getState());
+  const allGalleries = selectGalleries(getState());
   const oldGallery = selectSingleGallery(getState());
   const newGallery = {
     ...oldGallery,
@@ -39,6 +40,12 @@ export const deletePhoto = (id) => async (dispatch, getState) => {
     });
     console.log("response:", response);
     dispatch(storeSingleGallery(newGallery));
+    if (allGalleries.length) {
+      const filteredGalleries = allGalleries.map((gallery) => {
+        return gallery.id === newGallery.id ? newGallery : gallery;
+      });
+      dispatch(storeGalleries(filteredGalleries));
+    }
   } catch (e) {
     console.log(e);
   }
