@@ -23,3 +23,7 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
     }
   }
 };
+
+export const deletePhoto = (id) => async (dispatch, getState) => {
+  console.log("Deleting photo with id:", id);
+};

@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styling.css";
 import { selectUser } from "../../store/user/selectors";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
+import { deletePhoto } from "../../store/photo/actions";
 
 export default function PhotoCard(props) {
   const user = useSelector(selectUser);
-  console.log("user.name:", user.name);
-  console.log("props.handle:", props.handle);
+  const dispatch = useDispatch();
+  function deleteButtonPressed() {
+    dispatch(deletePhoto(props.id));
+  }
 
   return (
     <div className="photo-card">
@@ -16,7 +19,11 @@ export default function PhotoCard(props) {
         <img src={props.src} alt={props.info} />
       </Link>
       {user.name === props.handle ? (
-        <Button style={{ marginTop: 10 }} variant="dark">
+        <Button
+          style={{ marginTop: 10 }}
+          variant="dark"
+          onClick={deleteButtonPressed}
+        >
           Delete
         </Button>
       ) : (
