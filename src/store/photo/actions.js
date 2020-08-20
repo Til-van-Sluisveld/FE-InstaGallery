@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { apiUrl } from "../../config/constants";
 import { selectSingleGallery } from "../galleries/selectors";
+import { selectToken } from "../user/selectors";
 
 export const storeSinglePhoto = (photo) => ({
   type: "STORE_PHOTO",
@@ -25,9 +26,11 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
 };
 
 export const deletePhoto = (id) => async (dispatch, getState) => {
-  //console.log("Deleting photo with id:", id);
+  const token = selectToken(getState());
   try {
-    const response = await Axios.delete(`${apiUrl}/photos/delete/${id}`);
+    const response = await Axios.delete(`${apiUrl}/photos/delete/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     console.log("response:", response);
   } catch (e) {
     console.log(e);
