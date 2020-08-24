@@ -2,6 +2,7 @@ import Axios from "axios";
 import { apiUrl } from "../../config/constants";
 import { selectGalleries } from "./selectors";
 import { selectToken, selectUser } from "../user/selectors";
+import { appLoading, appDoneLoading } from "../appState/actions";
 
 export const storeGalleries = (galleries) => ({
   type: "STORE_GALLERIES",
@@ -19,6 +20,7 @@ export const importPhotosToGallery = (photos, name) => ({
 });
 
 export const getGalleries = () => async (dispatch, getState) => {
+  dispatch(appLoading());
   try {
     const response = await Axios.get(`${apiUrl}/galleries`);
     //sort by date so newest pictures appear first in gallery
@@ -28,6 +30,7 @@ export const getGalleries = () => async (dispatch, getState) => {
       });
     });
     dispatch(storeGalleries(response.data));
+    dispatch(appDoneLoading());
   } catch (e) {
     console.log(e);
   }
@@ -39,6 +42,7 @@ export const getSingleGallery = (name) => async (dispatch, getState) => {
     const galleryFound = state.find((gallery) => gallery.name === name);
     dispatch(storeSingleGallery(galleryFound));
   } else {
+    dispatch(appLoading());
     try {
       const response = await Axios.get(`${apiUrl}/galleries/${name}`);
       console.log("data", response.data);
@@ -46,6 +50,7 @@ export const getSingleGallery = (name) => async (dispatch, getState) => {
         return new Date(b.createdAt) - new Date(a.createdAt);
       });
       dispatch(storeSingleGallery(response.data));
+      dispatch(appDoneLoading());
     } catch (e) {
       console.log(e);
     }
