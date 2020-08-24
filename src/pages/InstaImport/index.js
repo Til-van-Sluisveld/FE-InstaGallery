@@ -6,6 +6,11 @@ import { selectUser } from "../../store/user/selectors";
 import { importPhotos } from "../../store/galleries/actions";
 import "./styling.css";
 import { Link } from "react-router-dom";
+import {
+  appLoading,
+  appDoneLoading,
+  showMessageWithTimeout,
+} from "../../store/appState/actions";
 
 export default function InstaImport() {
   const [handle, set_handle] = useState("");
@@ -20,7 +25,7 @@ export default function InstaImport() {
   async function instagramPhotos(get_handle) {
     // It will contain our photos' links
     const res = [];
-
+    dispatch(appLoading());
     try {
       const userInfoSource = await Axios.get(
         `https://www.instagram.com/${get_handle}/`
@@ -53,9 +58,14 @@ export default function InstaImport() {
           info: node.accessibility_caption,
           src: node.thumbnail_src,
         });
+        dispatch(appDoneLoading());
       }
     } catch (e) {
       console.error("Unable to retrieve photos. Reason: " + e.toString());
+      dispatch(
+        showMessageWithTimeout("danger", true, "Unable to retrieve photos.")
+      );
+      dispatch(appDoneLoading());
     }
 
     return res;

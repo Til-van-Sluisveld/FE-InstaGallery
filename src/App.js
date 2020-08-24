@@ -18,6 +18,7 @@ import Gallery from "./pages/Gallery";
 import PhotoDetail from "./pages/PhotoDetail";
 import ShoppingCart from "./pages/ShoppingCart";
 import BuyerInfo from "./pages/BuyerInfo";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function App() {
         <Route path="/import" component={InstaImport} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   );

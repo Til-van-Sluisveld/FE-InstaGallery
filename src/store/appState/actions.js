@@ -15,8 +15,8 @@ export const setMessage = (variant, dismissable, text) => {
     payload: {
       variant,
       dismissable,
-      text
-    }
+      text,
+    },
   };
 };
 
@@ -26,11 +26,21 @@ export const showMessageWithTimeout = (
   text,
   timeOutMilliSeconds
 ) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(setMessage(variant, dismissable, text));
 
     const timeout = timeOutMilliSeconds || DEFAULT_MESSAGE_TIMEOUT;
 
     setTimeout(() => dispatch(clearMessage()), timeout);
   };
+};
+
+export const errorUserMessage = (error) => async (dispatch, getState) => {
+  if (error.response) {
+    console.log(error.response.data.message);
+    dispatch(setMessage("danger", true, error.response.data.message));
+  } else {
+    console.log(error.message);
+    dispatch(setMessage("danger", true, error.message));
+  }
 };
