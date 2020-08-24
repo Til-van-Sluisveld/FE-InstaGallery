@@ -3,7 +3,11 @@ import { apiUrl } from "../../config/constants";
 import { selectSingleGallery, selectGalleries } from "../galleries/selectors";
 import { selectToken } from "../user/selectors";
 import { storeSingleGallery, storeGalleries } from "../galleries/actions";
-import { appLoading, appDoneLoading } from "../appState/actions";
+import {
+  appLoading,
+  appDoneLoading,
+  errorUserMessage,
+} from "../appState/actions";
 
 export const storeSinglePhoto = (photo) => ({
   type: "STORE_PHOTO",
@@ -24,7 +28,7 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
       dispatch(storeSinglePhoto(response.data));
       dispatch(appDoneLoading());
     } catch (e) {
-      console.log(e);
+      dispatch(errorUserMessage(e));
     }
   }
 };

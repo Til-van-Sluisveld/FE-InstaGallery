@@ -2,7 +2,11 @@ import Axios from "axios";
 import { apiUrl } from "../../config/constants";
 import { selectGalleries } from "./selectors";
 import { selectToken, selectUser } from "../user/selectors";
-import { appLoading, appDoneLoading } from "../appState/actions";
+import {
+  appLoading,
+  appDoneLoading,
+  errorUserMessage,
+} from "../appState/actions";
 
 export const storeGalleries = (galleries) => ({
   type: "STORE_GALLERIES",
@@ -32,7 +36,7 @@ export const getGalleries = () => async (dispatch, getState) => {
     dispatch(storeGalleries(response.data));
     dispatch(appDoneLoading());
   } catch (e) {
-    console.log(e);
+    dispatch(errorUserMessage(e));
   }
 };
 
@@ -52,7 +56,7 @@ export const getSingleGallery = (name) => async (dispatch, getState) => {
       dispatch(storeSingleGallery(response.data));
       dispatch(appDoneLoading());
     } catch (e) {
-      console.log(e);
+      dispatch(errorUserMessage(e));
     }
   }
 };
