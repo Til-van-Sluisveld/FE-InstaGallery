@@ -3,6 +3,7 @@ import { apiUrl } from "../../config/constants";
 import { selectSingleGallery, selectGalleries } from "../galleries/selectors";
 import { selectToken } from "../user/selectors";
 import { storeSingleGallery, storeGalleries } from "../galleries/actions";
+import { appLoading, appDoneLoading } from "../appState/actions";
 
 export const storeSinglePhoto = (photo) => ({
   type: "STORE_PHOTO",
@@ -17,9 +18,11 @@ export const getSinglePhoto = (id) => async (dispatch, getState) => {
     );
     dispatch(storeSinglePhoto(photoFound));
   } else {
+    dispatch(appLoading());
     try {
       const response = await Axios.get(`${apiUrl}/photos/${id}`);
       dispatch(storeSinglePhoto(response.data));
+      dispatch(appDoneLoading());
     } catch (e) {
       console.log(e);
     }
